@@ -13,6 +13,7 @@
             padding: 0;
             background-color: #f7f7f7;
             transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Prevent horizontal overflow */
         }
 
         /* Dark Mode */
@@ -56,6 +57,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            overflow-x: auto; /* Prevent overflow in navigation */
         }
 
         .menu-bar {
@@ -261,7 +263,7 @@
     <header>
         <h1>Chongdas Eatery</h1>
         <button id="dark-mode-toggle">
-            <i id="dark-mode-icon" class="fas fa-moon"></i>
+            <span id="dark-mode-icon">🌞</span>
         </button>
     </header>
 
@@ -314,7 +316,7 @@
             <!-- Items will be dynamically added here -->
         </div>
         <div id="total">
-            Total: $0.00
+            Total: N0.00
         </div>
         <button id="checkout">Checkout</button>
     </section>
@@ -323,7 +325,8 @@
     <footer>
         <div class="footer-content">
             <h3>Chongdas Eatery</h3>
-            <p>Your favorite fast food spot!</p>
+            <p>Your favorite fast food spot</p>
+
             <ul class="socials">
                 <li><a href="#"><i class="fab fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>
