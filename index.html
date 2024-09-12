@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chongdas Eatery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        
+        /* Header and Menu */
+        header {
+            background-color: #ffcc00;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #ffcc00;
+            padding: 10px;
+        }
+
+        .menu-bar {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-bar li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .menu-bar a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* KYC Section */
+        .kyc-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .kyc-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .kyc-icon {
+            text-align: center;
+        }
+
+        .kyc-icon i {
+            font-size: 50px;
+            color: #ffcc00;
+        }
+
+        /* Menu Items */
+        .menu {
+            padding: 20px;
+        }
+        
+        .menu h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .menu-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .add-to-cart {
+            background-color: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Cart */
+        .cart {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 400px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #cart-items {
+            margin-bottom: 20px;
+        }
+        
+        #total {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        #checkout {
+            background-color: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .socials {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .socials li {
+            margin: 0 10px;
+        }
+
+        .socials a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .socials a:hover {
+            color: #ffcc00;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Chongdas Eatery</h1>
+    </header>
+
+    <!-- JavaScript Menu -->
+    <nav>
+        <ul class="menu-bar">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Menu</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Cakes</a></li>
+                    <li><a href="#">Fries</a></li>
+                    <li><a href="#">Drinks</a></li>
+                </ul>
+            </li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- KYC Section -->
+    <section class="kyc-section">
+        <h2>Complete Your KYC</h2>
+        <div class="kyc-icons">
+            <div class="kyc-icon">
+                <i class="fas fa-id-card"></i>
+                <p>Upload ID</p>
+            </div>
+            <div class="kyc-icon">
+                <i class="fas fa-camera"></i>
+                <p>Take a Selfie</p>
+            </div>
+            <div class="kyc-icon">
+                <i class="fas fa-envelope-open"></i>
+                <p>Verify Email</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="cake.jpg" alt="Cakes">
+                <h3>Cakes</h3>
+                <p>Price: N50000.99</p>
+                <button class="add-to-cart" data-item="Big Mac" data-price="5.99">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="fries.jpg" alt="Fries">
+                <h3>Fries</h3>
+                <p>Price: N2000.99</p>
+                <button class="add-to-cart" data-item="Fries" data-price="2.99">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="coke.jpg" alt="Drink">
+                <h3>Coca Cola</h3>
+                <p>Price: N1000.99</p>
+                <button class="add-to-cart" data-item="Coca Cola" data-price="1.99">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items">
+            <!-- Items will be dynamically added here -->
+        </div>
+        <div id="total">
+            Total: $0.00
+        </div>
+        <button id="checkout">Checkout</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Chongdas Eatery</h3>
+            <p>Your favorite fast food spot!</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Chongdas Eatery | Designed by King</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let cart = [];
+            let total = 0;
+        
+            const cartItemsDiv = document.getElementById('cart-items');
+            const totalDiv = document.getElementById('total');
+            const checkoutBtn = document.getElementById('checkout');
+        
+            function updateCart() {
+                cartItemsDiv.innerHTML = '';
+                cart.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = `${item.name} - $${item.price}`;
+                    cartItemsDiv.appendChild(div);
+                });
+                totalDiv.textContent = `Total: $${total.toFixed(2)}`;
+            }
+        
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function () {
+                    const itemName = this.getAttribute('data-item');
+                    const itemPrice = parseFloat(this.getAttribute('data-price'));
+        
+                    cart.push({ name: itemName, price: itemPrice });
+                    total += itemPrice;
+                    updateCart();
+                });
+            });
+        
+            checkoutBtn.addEventListener('click', function () {
+                alert('Proceeding to checkout...');
+                cart = [];
+                total = 0;
+                updateCart();
+            });
+        });
+    </script>
+</body>
+</html>
