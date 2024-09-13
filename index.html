@@ -5,257 +5,467 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chongdas Eatery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            transition: background-color 0.3s, color 0.3s;
-            overflow-x: hidden; /* Prevent horizontal overflow */
-        }
+     /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
 
-        /* Dark Mode */
-        body.dark-mode {
-            background-color: #2c2c2c;
-            color: white;
-        }
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1c1c1c;
+    color: #eaeaea;
+}
 
-        /* Header */
-        header {
-            background-color: #ffcc00;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
+/* Header */
+header {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
 
-        h1 {
-            margin: 0;
-        }
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #8f7302;
+}
 
-        /* Dark Mode Toggle */
-        #dark-mode-toggle {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #333;
-        }
+/* Dark Mode Toggle */
+#dark-mode-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
 
-        body.dark-mode #dark-mode-toggle {
-            color: #ffcc00;
-        }
+body.dark-mode header {
+    background-color: #333;
+}
 
-        /* Navigation */
-        nav {
-            background-color: #ffcc00;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            overflow-x: auto; /* Prevent overflow in navigation */
-        }
+body.dark-mode header h1 {
+    color: #ffcc00;
+}
 
-        .menu-bar {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+/* Navigation */
+nav {
+    background-color: #fff;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
 
-        .menu-bar li {
-            margin: 0 15px;
-            position: relative;
-        }
+.menu-bar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-        .menu-bar a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
+.menu-bar li {
+    margin: 0 15px;
+    position: relative;
+}
 
-        /* Dark Mode for Navigation */
-        body.dark-mode .menu-bar a {
-            color: white;
-        }
+.menu-bar a {
+    text-decoration: none;
+    color: #8f7302;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, background-color 0.3s, border-radius 0.3s;
+}
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            min-width: 160px;
-            z-index: 1;
-        }
+.menu-bar a:hover,
+.menu-bar a:focus {
+    color: #b99609;
+    background-color: rgba(228, 222, 198, 0.945);
+    border-radius: 5px;
+}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+.menu-bar a i {
+    margin-right: 8px;
+}
 
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+}
 
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 
-        /* Menu Section */
-        .menu {
-            padding: 20px;
-        }
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
 
-        .menu h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.dropdown-content a:hover,
+.dropdown-content a:focus {
+    background-color: rgba(27, 26, 23, 0.842);
+}
 
-        .menu-items {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
+/* Dark Mode for Navigation */
+body.dark-mode nav {
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
 
-        .menu-item {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 200px;
-            margin: 10px;
-            text-align: center;
-            padding: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+body.dark-mode .menu-bar a {
+    color: #eaeaea;
+}
 
-        .menu-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-        }
+body.dark-mode .menu-bar a:hover,
+body.dark-mode .menu-bar a:focus {
+    color: #ffcc00;
+    background-color: rgba(255, 204, 0, 0.2);
+}
 
-        .menu-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+body.dark-mode .dropdown-content {
+    background-color: #444;
+}
 
-        .add-to-cart {
-            background-color: #ffcc00;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
+body.dark-mode .dropdown-content a {
+    color: #eaeaea;
+}
 
-        .add-to-cart:hover {
-            background-color: #e6b800;
-        }
+body.dark-mode .dropdown-content a:hover,
+body.dark-mode .dropdown-content a:focus {
+    background-color: rgba(255, 204, 0, 0.2);
+}
 
-        /* Dark Mode for Menu Items */
-        body.dark-mode .menu-item {
-            background-color: #444;
-            color: white;
-        }
+/* Cart Icon */
+.cart-icon {
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-        /* Cart Section */
-        .cart {
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px auto;
-            width: 400px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+.cart-icon .cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
 
-        body.dark-mode .cart {
-            background-color: #444;
-        }
+body.dark-mode .cart-icon {
+    color: #eaeaea;
+}
 
-        #cart-items {
-            margin-bottom: 20px;
-        }
+/* Middle Image */
+.middle-image {
+    width: 100%;
+    height: 300px;
+    background: url('middle-image.jpg') no-repeat center center;
+    background-size: cover;
+    margin: 20px 0;
+}
 
-        #total {
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+/* Menu Section */
+.menu {
+    padding: 20px;
+}
 
-        #checkout {
-            background-color: #ffcc00;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.menu h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .menu-items {
-                flex-direction: column;
-                align-items: center;
-            }
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
-            .cart {
-                width: 90%;
-            }
+.menu-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-grow: 1;
+    max-width: 200px;
+}
 
-            /* Dark Mode Toggle for Mobile */
-            #dark-mode-toggle {
-                font-size: 20px;
-                right: 10px;
-                top: 10px;
-            }
-        }
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
 
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
+.menu-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
 
-        .footer-content h3 {
-            margin: 0;
-            font-size: 24px;
-        }
+.add-to-cart {
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
 
-        .footer-bottom {
-            margin-top: 20px;
-        }
+.add-to-cart:hover {
+    background-color: #e6b800;
+}
 
-        .socials {
-            list-style-type: none;
-            padding: 0;
-            margin: 10px 0;
-            display: flex;
-            justify-content: center;
-        }
+/* Dark Mode for Menu Items */
+body.dark-mode .menu-item {
+    background-color: #444;
+    color: #eaeaea;
+}
 
-        .socials li {
-            margin: 0 10px;
-        }
+body.dark-mode .cart {
+    background-color: #333;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Cart Section */
 
-        .socials a {
-            text-decoration: none;
-            color: white;
-        }
+.cart {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    margin: 0;
+    width: 300px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    z-index: 1000;
+    transition: opacity 0.3s, transform 0.3s;
+}
 
-        .socials a:hover {
-            color: #ffcc00;
-        }
+.cart.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cart.hide {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+#cart-items {
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+#cart-items div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+body.dark-mode #cart-items div {
+    border-bottom: 1px solid #444;
+}
+
+.remove-item {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.remove-item:hover {
+    background-color: #e60000;
+}
+
+body.dark-mode .remove-item {
+    background-color: #ff0000;
+}
+
+#total {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+body.dark-mode #total {
+    color: #eaeaea;
+}
+
+#checkout {
+    background-color: #ffcc00;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#checkout:hover {
+    background-color: #e6b800;
+}
+
+body.dark-mode #checkout {
+    background-color: #ffcc00;
+}
+
+/* Modern Footer */
+footer {
+    background-color: transparent;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+}
+body.dark-mode footer {
+    background-color: #333; /* Dark background for footer in dark mode */
+    color: #eaeaea; /* Light text color for footer in dark mode */
+}
+
+.socials {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.socials li {
+    margin: 0 10px;
+}
+
+.socials a {
+    text-decoration: none;
+    color: rgb(21, 21, 226);
+}
+
+.socials a:hover {
+    color: #ffcc00;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cart {
+        width: 90%;
+    }
+
+    #dark-mode-toggle {
+        font-size: 20px;
+        right: 10px;
+        top: 10px;
+    }
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.carousel-indicators button {
+    background-color: #fff;
+    border: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.carousel-inner img {
+    height: 300px;
+    border-radius: 15px;
+    width: 100%;
+}
+/* Carousel Caption */
+.carousel-caption {
+    position: absolute;
+    bottom: 50%;       /* Center vertically */
+    left: 50%;         /* Center horizontally */
+    transform: translate(-50%, 50%); /* Adjust position to truly center */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: #fff;       /* White text color */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    max-width: 80%;    /* Adjust width as needed */
+    text-align: center;
+    z-index: 100;     /* Ensure it stays on top */
+}
+
+body.dark-mode .socials a {
+    color: #ADD8E6
+}
+.socials a:hover {
+    color: #1ec527
+     }
+     body.dark-mode .socials a:hover {
+        color: #a8c217
+           }
     </style>
 </head>
 <body>
@@ -267,61 +477,132 @@
         </button>
     </header>
 
-    <!-- JavaScript Menu -->
+    <!-- Navigation -->
     <nav>
         <ul class="menu-bar">
-            <li><a href="#">Home</a></li>
+            <li><a href="#menu" aria-label="Menu"><i class="fas fa-hamburger"></i> Menu</a></li>
             <li class="dropdown">
-                <a href="#">Menu</a>
-                <ul class="dropdown-content">
-                    <li><a href="#">Cakes</a></li>
-                    <li><a href="#">Fries</a></li>
-                    <li><a href="#">Drinks</a></li>
-                </ul>
+                <a href="#" aria-label="More"><i class="fas fa-utensils"></i> More</a>
+                <div class="dropdown-content">
+                    <a href="#delivery"><i class="fas fa-truck"></i> Delivery</a>
+                    <a href="#catering"><i class="fas fa-concierge-bell"></i> Catering</a>
+                    <a href="#event"><i class="fas fa-calendar-alt"></i> Event Hosting</a>
+                </div>
             </li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#about" aria-label="About"><i class="fas fa-users"></i> About</a></li>
+            <li><a href="#contact" aria-label="Contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+            <li class="cart-icon ml-auto">
+                <a href="" aria-label="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+            </li>
         </ul>
     </nav>
+
+    <!-- Middle Image Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide middle-image" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100 img-fluid" src="pizza.jpg" alt="First slide" loading="lazy">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="cake.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="fries.jpg" alt="Third slide">
+        </div>
+        <!-- Constant text overlay -->
+        <div class="carousel-caption">
+            GRAB A YUMMY MEAL TODAY FROM US
+    </div>
+</div>
+
 
     <!-- Menu Section -->
     <section class="menu">
         <h2>Our Menu</h2>
         <div class="menu-items">
+            <!-- Add up to 10 menu items here -->
             <div class="menu-item">
-                <img src="cake.jpg" alt="Cakes">
-                <h3>Cakes</h3>
-                <p><strong>Price: N50000.99</strong></p>
-                <button class="add-to-cart" data-item="Cake" data-price="50000.99">Add to Cart</button>
+                <img src="cake.jpg" alt="Cake">
+                <h3>Delicious Cake</h3>
+                <p><strong>$10</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Delicious Cake', 10)">Add to Cart</button>
             </div>
             <div class="menu-item">
                 <img src="fries.jpg" alt="Fries">
-                <h3>Fries</h3>
-                <p><strong>Price: N2000.99</strong></p>
-                <button class="add-to-cart" data-item="Fries" data-price="2000.99">Add to Cart</button>
+                <h3>Crispy Fries</h3>
+                <p><strong>$5</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Crispy Fries', 5)">Add to Cart</button>
             </div>
             <div class="menu-item">
-                <img src="coke.jpg" alt="Drink">
-                <h3>Coca Cola</h3>
-                <p><strong>Price: N1000.99</strong></p>
-                <button class="add-to-cart" data-item="Coca Cola" data-price="1000.99">Add to Cart</button>
+                <img src="coke.jpg" alt="Coke">
+                <h3>Refreshing Coke</h3>
+                <p><strong>$3</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Refreshing Coke', 3)">Add to Cart</button>
             </div>
+            <div class="menu-item">
+                <img src="pie.jpg" alt="Burger">
+                <h3>Juicy Burger</h3>
+                <p><strong>$8</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Juicy Burger', 8)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="pizza.jpg" alt="Pizza">
+                <h3>Cheesy Pizza</h3>
+                <p><strong>$12</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Cheesy Pizza', 12)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="creampie.jpg" alt="Salad">
+                <h3>Fresh Salad</h3>
+                <p><strong>$7</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Fresh Salad', 7)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="sandwich.jpg" alt="Sandwich">
+                <h3>Grilled Sandwich</h3>
+                <p><strong>$6</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Grilled Sandwich', 6)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="spag.jpg" alt="Pasta">
+                <h3>Spaghetti Pasta</h3>
+                <p><strong>$11</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Spaghetti Pasta', 11)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="soup.jpg" alt="Soup">
+                <h3>Hearty Soup</h3>
+                <p><strong>$4</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Hearty Soup', 4)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="smootie.jpg" alt="Smoothie">
+                <h3>Fruity Smoothie</h3>
+                <p><strong>$6</strong></p>
+                <button class="add-to-cart" onclick="addToCart('Fruity Smoothie', 6)">Add to Cart</button>
+            </div>
+            
         </div>
+        
     </section>
 
     <!-- Cart Section -->
-    <section class="cart">
+    <section class="cart" id="cart-section">
         <h2>Your Cart</h2>
-        <div id="cart-items">
-            <!-- Items will be dynamically added here -->
-        </div>
-        <div id="total">
-            Total: N0.00
-        </div>
+        <div id="cart-items"></div>
+        <p id="total">Total: $0</p>
         <button id="checkout">Checkout</button>
     </section>
+    
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <h3>Chongdas Eatery</h3>
@@ -334,46 +615,62 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Chongdas Eatery</p>
+            <p>&copy; 2024 Chongdas Eatery| Designed by King</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Dark Mode Toggle
-            const darkModeToggle = document.getElementById('dark-mode-toggle');
-            const darkModeIcon = document.getElementById('dark-mode-icon');
-
-            darkModeToggle.addEventListener('click', function () {
-                document.body.classList.toggle('dark-mode');
-                
-                // Toggle icon between sun and moon
-                if (document.body.classList.contains('dark-mode')) {
-                    darkModeIcon.classList.replace('fa-moon', 'fa-sun');
-                } else {
-                    darkModeIcon.classList.replace('fa-sun', 'fa-moon');
-                }
-            });
-
-            // Cart Functionality
-            const cartItems = document.getElementById('cart-items');
-            const totalElement = document.getElementById('total');
+        const cartItems = [];
+        const cartCountElement = document.getElementById('cart-count');
+        const cartItemsElement = document.getElementById('cart-items');
+        const totalElement = document.getElementById('total');
+        const cartSection = document.getElementById('cart-section');
+        const cartIcon = document.querySelector('.cart-icon');
+    
+        function updateCart() {
+            cartItemsElement.innerHTML = '';
             let total = 0;
-
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function () {
-                    const itemName = this.getAttribute('data-item');
-                    const itemPrice = parseFloat(this.getAttribute('data-price'));
-                    
-                    const itemElement = document.createElement('div');
-                    itemElement.textContent = `${itemName} - N${itemPrice.toFixed(2)}`;
-                    cartItems.appendChild(itemElement);
-
-                    total += itemPrice;
-                    totalElement.textContent = `Total: N${total.toFixed(2)}`;
-                });
+            cartItems.forEach(item => {
+                total += item.price;
+                cartItemsElement.innerHTML += `
+                    <div>
+                        ${item.name} - $${item.price}
+                        <button class="remove-item" onclick="removeFromCart('${item.name}')">Remove</button>
+                    </div>
+                `;
             });
+            cartCountElement.textContent = cartItems.length;
+            totalElement.textContent = 'Total: $' + total;
+        }
+    
+        function addToCart(name, price) {
+            cartItems.push({ name, price });
+            updateCart();
+        }
+    
+        function removeFromCart(name) {
+            const index = cartItems.findIndex(item => item.name === name);
+            if (index > -1) {
+                cartItems.splice(index, 1);
+                updateCart();
+            }
+        }
+    
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    
+        // Cart Icon Click
+        cartIcon.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevents the default behavior of the anchor tag
+            cartSection.classList.toggle('show');
+            console.log('Cart visibility toggled');
         });
     </script>
 </body>
