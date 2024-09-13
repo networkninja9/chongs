@@ -8,6 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
      /* General Styles */
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -69,6 +70,13 @@ nav {
     border-bottom: 1px solid #ccc;
 }
 
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Navigation Links */
 .menu-bar {
     list-style-type: none;
     padding: 0;
@@ -263,8 +271,8 @@ body.dark-mode .cart {
     background-color: #333;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
-/* Cart Section */
 
+/* Cart Section */
 .cart {
     position: fixed;
     right: 20px;
@@ -292,6 +300,7 @@ body.dark-mode .cart {
     opacity: 0;
     transform: translateY(20px);
 }
+
 #cart-items {
     margin-bottom: 20px;
     font-size: 1rem;
@@ -373,6 +382,7 @@ footer {
 .footer-bottom {
     margin-top: 20px;
 }
+
 body.dark-mode footer {
     background-color: #333; /* Dark background for footer in dark mode */
     color: #eaeaea; /* Light text color for footer in dark mode */
@@ -399,7 +409,13 @@ body.dark-mode footer {
     color: #ffcc00;
 }
 
+body.dark-mode .socials a {
+    color: #ADD8E6;
+}
 
+body.dark-mode .socials a:hover {
+    color: #a8c217;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -440,6 +456,7 @@ body.dark-mode footer {
     border-radius: 15px;
     width: 100%;
 }
+
 /* Carousel Caption */
 .carousel-caption {
     position: absolute;
@@ -457,15 +474,6 @@ body.dark-mode footer {
     z-index: 100;     /* Ensure it stays on top */
 }
 
-body.dark-mode .socials a {
-    color: #ADD8E6
-}
-.socials a:hover {
-    color: #1ec527
-     }
-     body.dark-mode .socials a:hover {
-        color: #a8c217
-           }
     </style>
 </head>
 <body>
@@ -479,7 +487,17 @@ body.dark-mode .socials a {
 
     <!-- Navigation -->
     <nav>
-        <ul class="menu-bar">
+    <div class="nav-container">
+        <!-- Toggle Button for Mobile View -->
+        <div class="nav-toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <!-- Logo or Brand Name -->
+        <a href="#" class="brand"></a>
+        
+        <!-- Navigation Links -->
+        <ul class="menu-bar" id="menu-bar">
             <li><a href="#menu" aria-label="Menu"><i class="fas fa-hamburger"></i> Menu</a></li>
             <li class="dropdown">
                 <a href="#" aria-label="More"><i class="fas fa-utensils"></i> More</a>
@@ -491,14 +509,15 @@ body.dark-mode .socials a {
             </li>
             <li><a href="#about" aria-label="About"><i class="fas fa-users"></i> About</a></li>
             <li><a href="#contact" aria-label="Contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
-            <li class="cart-icon ml-auto">
-                <a href="" aria-label="Cart">
+            <li class="cart-icon">
+                <a href="#" aria-label="Cart">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-count" class="cart-badge">0</span>
                 </a>
             </li>
         </ul>
-    </nav>
+    </div>
+</nav>
 
     <!-- Middle Image Carousel -->
 <div id="carouselExampleIndicators" class="carousel slide middle-image" data-ride="carousel">
